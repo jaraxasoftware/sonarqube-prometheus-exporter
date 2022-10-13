@@ -12,6 +12,8 @@ spec:
         metadata: {}
         stepTemplate:
           env:
+          - name: ARTIFACT
+            value: ./target
           image: uses:jaraxasoftware/jaraxa-pipeline-catalog/tasks/maven-java11/release.yaml@versionStream
           name: ""
           resources:
@@ -52,8 +54,8 @@ spec:
               --user $REPO_OWNER \
               --repo $REPO_NAME \
               --tag v${VERSION} \
-              --name "sonar-erlang-plugin.jar" \
-              --file $ARTIFACT                  
+              --name "sonar-prometheus-exporter.jar" \
+              --file $ARTIFACT/sonar-prometheus-exporter-$VERSION.jar
         volumes:
         - name: maven-settings
           secret:
